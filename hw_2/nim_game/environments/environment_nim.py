@@ -16,8 +16,15 @@ class EnvironmentNim:
 
     def __init__(self, heaps_amount: int) -> None:
         if not (2 <= heaps_amount <= 10):
-            raise ValueError("Количество кучек должно быть не меньше 2 и не больше 10")
-        self._heaps = [randint(STONE_AMOUNT_MIN, STONE_AMOUNT_MAX) for _ in range(heaps_amount)]
+            raise ValueError(
+                "Количество кучек должно быть "
+                "не меньше 2 и не больше 10"
+            )
+
+        self._heaps = [
+            randint(STONE_AMOUNT_MIN, STONE_AMOUNT_MAX)
+            for _ in range(heaps_amount)
+        ]
 
     def get_state(self) -> list[int]:
         """
@@ -33,13 +40,13 @@ class EnvironmentNim:
 
         :param state_change: структура описывающая изменение состояния
         """
-        index = state_change.heap_id
-        take = state_change.decrease
+        heap_id = state_change.heap_id
+        decrease = state_change.decrease
 
-        if not (1 <= index <= len(self._heaps)):
+        if not (1 <= heap_id <= len(self._heaps)):
             raise ValueError("Индекс кучки вне допустимого диапазона")
 
-        if not (1 <= take <= self._heaps[index - 1]):
+        if not (1 <= decrease <= self._heaps[heap_id - 1]):
             raise ValueError("Недопустимое изменение состояния кучки")
 
-        self._heaps[index - 1] -= take
+        self._heaps[heap_id - 1] -= decrease

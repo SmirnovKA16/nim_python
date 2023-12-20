@@ -42,9 +42,7 @@ class GameNim:
 
         :return: True - игра окончена, False - иначе
         """
-        if sum(self.heaps_state) == 0:
-            return True
-        return False
+        return sum(self.heaps_state) == 0
 
     @property
     def heaps_state(self) -> list[int]:

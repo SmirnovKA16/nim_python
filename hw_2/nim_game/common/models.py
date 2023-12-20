@@ -7,8 +7,8 @@ from nim_game.common.enumerations import Players
 # модель для описания ходов
 @dataclass
 class NimStateChange:
-    heap_id: int                                    # номер кучки
-    decrease: int                                   # количество убранных камней
+    heap_id: int                                   # номер кучки
+    decrease: int                                  # количество убранных камней
 
 
 # модель для описания состояния игры
